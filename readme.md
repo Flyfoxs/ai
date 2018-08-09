@@ -11,15 +11,13 @@
 		没想到特别简单的方法.希望有心人给个提示
 
 * Pandas解决方案:
-	
+```python
 		cost.sort_values(['city', 'month']).groupby('city')['score'].rolling(3).mean()
-
+```
 * 备注
 
 		很显然, Pandas要方便多了
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/group/rolling_row_number.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/group/rolling_row_number.ipynb)
 
 
 
@@ -43,9 +41,7 @@
 * 备注:
 
 		哪种方案好,就不用多说了
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb)
 
 ## 异常值的处理
 * 应用场景:
@@ -63,9 +59,7 @@
 * 备注:
 			
 		哪种方案好,就不用多说了
-* Jupyter 示例
-
-https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb)
 
 ## 行列转换
 * 应用场景:
@@ -87,9 +81,7 @@ https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
 * 备注:
 		
 		当有多列时,DB的解决方案会看起来十分累赘
-* Jupyter 示例		
-		
-		https://github.com/Flyfoxs/ai/blob/master/group/pivot_stack_melt.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/group/pivot_stack_melt.ipynb)
 
 
 ## 分组排序(row_number)
@@ -109,9 +101,7 @@ https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
 		
 		2种方案差不多, pandas稍稍好一点点.
 		
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/group/rolling_row_number.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/group/rolling_row_number.ipynb )
 
 
 ## 删除多余记录
@@ -134,9 +124,7 @@ https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
 * 备注:
 	
 		2种方案差别不大
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/other/duplicate.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/other/duplicate.ipynb)
 
 
 
@@ -145,22 +133,21 @@ https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
 
 * DB解决方案:
 
+```sql
 		select c2.city, c2.month,  (c2.score - c1.score)/c1.score
 		from cost c1, cost c2 where 
 			c1.month = c2.month-1
 			and c1.city = c2.city
-
+```
 * Pandas解决方案:
-	
+```	python
 		cost['previous'] = cost.sort_values(['city', 'month']).groupby('city')['score'].shift(1)
 		cost['percentage'] = (cost.score -  cost.previous)/cost.previous
-
+```
 * 备注:
 	
 		2种Solution差别不大,但是感觉熟悉后Pandas要更直接些
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/other/chain_relative_ratio_shift.ipynb
+* [Jupyter 示例]( https://github.com/Flyfoxs/ai/blob/master/other/chain_relative_ratio_shift.ipynb )
 		
 		
 		
@@ -185,9 +172,7 @@ https://github.com/Flyfoxs/ai/blob/master/group/transform.ipynb
 	
 		很显然Pandas功能上要合适些,并且当Column数量比较多时, Pandas的优势更明显
 		
-* Jupyter 示例
-
-		https://github.com/Flyfoxs/ai/blob/master/other/axis_daterange.ipynb
+* [Jupyter 示例](https://github.com/Flyfoxs/ai/blob/master/other/axis_daterange.ipynb)
 		
 	
 
